@@ -1,0 +1,6 @@
+[submodule "ridgeback"]
+	path = ridgeback
+	url = https://github.com/CoMMALab/ridgeback.git
+[submodule "ridgeback_manipulation"]
+	path = ridgeback_manipulation
+	url = https://github.com/CoMMALab/ridgeback_manipulation.git
