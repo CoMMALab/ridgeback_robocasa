@@ -1,0 +1,132 @@
+<mujoco model="ridgeback">
+  <default>
+    <default class="robot">
+      <default class="visual">
+        <geom contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom contype="0" conaffinity="1" group="3" />
+      </default>
+    </default>
+    <default class="floor">
+      <geom type="plane" size="0 0 0.05" material="groundplane" />
+    </default>
+  </default>
+
+  <compiler angle="radian" meshdir="." balanceinertia="true" />
+
+  <visual>
+    <global offwidth="3840" offheight="2160" />
+  </visual>
+
+  <worldbody>
+    <body name="base_link" childclass="robot" pos="0 0 0.0262">
+      <body name="chassis_link">
+        <inertial pos="0.012 0.002 0.067" quat="0.5 0.5 0.5 0.5" mass="165.304" diaginertia="4.4744 7.1624 4.6155" />
+        <geom name="chassis_link_collision" type="mesh" mesh="chassis_link_collision_body_collision" class="collision" />
+        <geom name="chassis_link_visual" type="mesh" mesh="chassis_link_body" material="black" class="visual" />
+        <body name="riser_link" pos="0 0 0.22">
+          <geom name="riser_link_collision" pos="0 0 0.0275" quat="0.9239 0 0 0.3827" type="box" size="0.2465 0.2465 0.0275" class="collision" />
+          <geom name="riser_link_visual" pos="0 0 0.0275" quat="0.9239 0 0 0.3827" type="box" size="0.2465 0.2465 0.0275" material="light_grey" class="visual" />
+          <body name="top_link" pos="0 0 -0.22000000000000003">
+            <geom name="top_link_collision" type="mesh" mesh="top_link_collision_top" class="collision" />
+            <geom name="top_link_visual" type="mesh" mesh="top_link_top" material="black" class="visual" />
+          </body>
+          <body name="mid_mount" pos="0 0 0.06" />
+        </body>
+        <body name="right_side_cover_link">
+          <geom name="right_side_cover_link_visual" type="mesh" mesh="right_side_cover_link_side_cover" material="yellow" class="visual" />
+        </body>
+        <body name="left_side_cover_link">
+          <geom name="left_side_cover_link_visual" quat="0 0 0 1" type="mesh" mesh="right_side_cover_link_side_cover" material="yellow" class="visual" />
+        </body>
+        <body name="front_cover_link">
+          <geom name="front_cover_link_visual" type="mesh" mesh="front_cover_link_end_cover" material="black" class="visual" />
+        </body>
+        <body name="rear_cover_link">
+          <geom name="rear_cover_link_visual" quat="0 0 0 1" type="mesh" mesh="front_cover_link_end_cover" material="black" class="visual" />
+        </body>
+        <body name="front_lights_link">
+          <geom name="front_lights_link_visual" type="mesh" mesh="front_lights_link_lights" material="white" class="visual" />
+        </body>
+        <body name="rear_lights_link">
+          <geom name="rear_lights_link_visual" quat="0 0 0 1" type="mesh" mesh="front_lights_link_lights" material="black" class="visual" />
+        </body>
+        <body name="axle_link" pos="0 0 0.05">
+          <geom name="axle_link_visual" quat="0.7071 0 0.7071 0" type="mesh" mesh="axle_link_axle" material="black" class="visual" />
+          <body name="front_rocker_link" pos="0.319 0 0">
+            <inertial pos="0 0 0" quat="0.5 0.5 0.5 0.5" mass="10.267" diaginertia="0.0288 0.4324 0.413" />
+            <joint name="front_rocker" type="hinge" range="-0.08726 0.08726" axis="1 0 0" />
+            <geom name="front_rocker_link_visual" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="front_rocker_link_rocker" material="black" class="visual" />
+            <body name="front_left_wheel_link" pos="0 0.27549999999999997 0">
+              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
+              <joint name="front_left_wheel" type="hinge" axis="0 1 0" />
+              <geom name="front_left_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
+              <geom name="front_left_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            </body>
+            <body name="front_right_wheel_link" pos="0 -0.27549999999999997 0">
+              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
+              <joint name="front_right_wheel" type="hinge" axis="0 1 0" />
+              <geom name="front_right_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
+              <geom name="front_right_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            </body>
+          </body>
+          <body name="rear_rocker_link" pos="-0.319 0 0">
+            <inertial pos="0 0 0" quat="0.5 0.5 0.5 0.5" mass="10.267" diaginertia="0.0288 0.4324 0.413" />
+            <geom name="rear_rocker_link_visual" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="front_rocker_link_rocker" material="black" class="visual" />
+            <body name="rear_left_wheel_link" pos="0 0.27549999999999997 0">
+              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
+              <joint name="rear_left_wheel" type="hinge" axis="0 1 0" />
+              <geom name="rear_left_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
+              <geom name="rear_left_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            </body>
+            <body name="rear_right_wheel_link" pos="0 -0.27549999999999997 0">
+              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
+              <joint name="rear_right_wheel" type="hinge" axis="0 1 0" />
+              <geom name="rear_right_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
+              <geom name="rear_right_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            </body>
+          </body>
+        </body>
+        <body name="imu_link" pos="0.2085 -0.2902 0.1681">
+          <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
+        </body>
+      </body>
+      <freejoint name="floating_base" />
+    </body>
+    <light pos="0 0 2." dir="0 0 -1" directional="true" />
+    <geom name="floor" class="floor" size="0 0 0.05" />
+  </worldbody>
+
+  <asset>
+    <material name="light_grey" rgba="0.4 0.4 0.4 1.0" />
+    <material name="white" rgba="0.9 0.9 0.9 1.0" />
+    <material name="yellow" rgba="0.8 0.8 0.0 1.0" />
+    <material name="black" rgba="0.15 0.15 0.15 1.0" />
+    <mesh name="chassis_link_collision_body_collision" file="meshes/ridgeback_description/meshes/body-collision.stl" />
+    <mesh name="chassis_link_body" file="meshes/ridgeback_description/meshes/body.stl" />
+    <mesh name="top_link_collision_top" file="meshes/ridgeback_description/meshes/top.stl" />
+    <mesh name="top_link_top" file="meshes/ridgeback_description/meshes/top.stl" />
+    <mesh name="right_side_cover_link_side_cover" file="meshes/ridgeback_description/meshes/side-cover.stl" />
+    <mesh name="front_cover_link_end_cover" file="meshes/ridgeback_description/meshes/end-cover.stl" />
+    <mesh name="front_lights_link_lights" file="meshes/ridgeback_description/meshes/lights.stl" />
+    <mesh name="axle_link_axle" file="meshes/ridgeback_description/meshes/axle.stl" />
+    <mesh name="front_rocker_link_rocker" file="meshes/ridgeback_description/meshes/rocker.stl" />
+    <mesh name="front_left_wheel_link_wheel" file="meshes/ridgeback_description/meshes/wheel.stl" />
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+  </asset>
+
+  <actuator>
+    <motor name="front_rocker" joint="front_rocker" />
+    <motor name="front_left_wheel" joint="front_left_wheel" />
+    <motor name="front_right_wheel" joint="front_right_wheel" />
+    <motor name="rear_left_wheel" joint="rear_left_wheel" />
+    <motor name="rear_right_wheel" joint="rear_right_wheel" />
+  </actuator>
+
+  <visual>
+    <rgba haze="0.15 0.25 0.35 1" />
+  </visual>
+</mujoco>

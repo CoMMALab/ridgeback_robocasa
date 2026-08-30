@@ -1,0 +1,21 @@
+[project]
+name = "ridgeback-env"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Pranav Chitiveli", email = "pchitive@purdue.edu" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "mjlab>=1.6.0",
+    "urdf-to-mjcf>=0.1.1",
+    "xacro>=2.1.1",
+]
+
+[project.scripts]
+ridgeback-env = "ridgeback_env:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"
