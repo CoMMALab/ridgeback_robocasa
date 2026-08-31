@@ -10,7 +10,7 @@ import mujoco
 import mujoco.viewer
 
 
-DEFAULT_MODEL = Path(__file__).resolve().parent / "mjcf" / "ridgeback_base.xml"
+DEFAULT_MODEL = Path(__file__).resolve().parent / "mjcf" / "ridgeback_dual_panda.mjb"
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,7 +43,14 @@ def main() -> None:
     if not model_path.is_file():
         raise SystemExit(f"MJCF file not found: {model_path}")
 
-    model = mujoco.MjModel.from_xml_path(str(model_path))
+    model_str = str(model_path)
+    if model_str.endswith(".xml"):
+        model = mujoco.MjModel.from_xml_path(str(model_path))
+    elif model_str.endswith(".mjb"):
+        model = mujoco.MjModel.from_binary_path(str(model_path))
+    else:
+        raise SystemExit(f"Unsupported MJCF file provided")
+
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
 

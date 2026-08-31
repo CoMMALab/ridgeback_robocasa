@@ -1,0 +1,32 @@
+<mujoco model="dual_panda_arms">
+  <default>
+    <default class="robot">
+      <default class="visual">
+        <geom contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom contype="0" conaffinity="1" group="3" />
+      </default>
+    </default>
+  </default>
+
+  <compiler angle="radian" meshdir="." balanceinertia="true" />
+
+  <option integrator="implicitfast" impratio="10" />
+
+  <worldbody>
+    <!-- Module origin: attach this body directly to Ridgeback's manipulator_mount frame. -->
+    <body name="dual_panda_mount" childclass="robot">
+      <body name="left_franka_mount_link" pos="0.21 0.20 0.0">
+        <attach model="panda" body="link0" prefix="left_panda_" />
+      </body>
+      <body name="right_franka_mount_link" pos="0.21 -0.20 0.0">
+        <attach model="panda" body="link0" prefix="right_panda_" />
+      </body>
+    </body>
+  </worldbody>
+
+  <asset>
+    <model name="panda" file="../mujoco_menagerie/franka_emika_panda/panda_nohand.xml" />
+  </asset>
+</mujoco>

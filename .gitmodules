@@ -4,3 +4,6 @@
 [submodule "ridgeback_manipulation"]
 	path = ridgeback_manipulation
 	url = https://github.com/CoMMALab/ridgeback_manipulation.git
+[submodule "mujoco_menagerie"]
+	path = mjcf/mujoco_menagerie
+	url = https://github.com/google-deepmind/mujoco_menagerie.git
