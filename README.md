@@ -9,7 +9,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 Verify that your setup works by running:
 ```bash
-uv run python3 visualize_ridgeback --simuate
+uv run python3 visualize_ridgeback
 ```
 
 This should show a mujoco visualization of a simulated ridgeback base with two mounted Franka Emika Panda arms.

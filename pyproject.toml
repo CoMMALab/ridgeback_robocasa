@@ -8,7 +8,8 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "mjlab>=1.6.0",
+    "mjviser>=0.0.14",
+    "mujoco>=3.11.0",
     "urdf-to-mjcf>=0.1.1",
     "xacro>=2.1.1",
 ]
