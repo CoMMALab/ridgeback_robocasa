@@ -12,4 +12,4 @@ Verify that your setup works by running:
 uv run python3 visualize_ridgeback
 ```
 
-This should show a mujoco visualization of a simulated ridgeback base with two mounted Franka Emika Panda arms.
+This should show an MjViser visualization of a simulated ridgeback base with two mounted Franka Emika Panda arms.
