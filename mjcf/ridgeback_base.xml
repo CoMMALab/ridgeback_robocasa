@@ -9,7 +9,7 @@
       </default>
     </default>
     <default class="floor">
-      <geom type="plane" size="0 0 0.05" material="groundplane" />
+      <geom type="plane" size="0 0 0.05" material="groundplane" conaffinity="3" />
     </default>
   </default>
 
@@ -20,6 +20,12 @@
   <visual>
     <global offwidth="3840" offheight="2160" />
   </visual>
+
+  <!-- mecanum models -->
+  <asset>
+    <model name="mecanum_1" file="mecanum_1.xml"/>
+    <model name="mecanum_2" file="mecanum_2.xml"/>
+  </asset>
 
   <worldbody>
     <body name="base_link" childclass="robot" pos="0 0 0.0262">
@@ -63,33 +69,21 @@
             <inertial pos="0 0 0" quat="0.5 0.5 0.5 0.5" mass="10.267" diaginertia="0.0288 0.4324 0.413" />
             <joint name="front_rocker" type="hinge" range="-0.08726 0.08726" axis="1 0 0" />
             <geom name="front_rocker_link_visual" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="front_rocker_link_rocker" material="black" class="visual" />
-            <body name="front_left_wheel_link" pos="0 0.27549999999999997 0" quat="0.9238795 0 0 -0.3826834">
-              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
-              <joint name="front_left_wheel" type="hinge" axis="0 1 0" />
-              <geom name="front_left_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
-              <geom name="front_left_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            <body name="front_left_wheel_link" pos="0 0.27549999999999997 0" quat="1 0 0 0">
+              <attach model="mecanum_1" body="wheel" prefix="front_left_"/>
             </body>
-            <body name="front_right_wheel_link" pos="0 -0.27549999999999997 0" quat="0.9238795 0 0 0.3826834">
-              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
-              <joint name="front_right_wheel" type="hinge" axis="0 1 0" />
-              <geom name="front_right_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
-              <geom name="front_right_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            <body name="front_right_wheel_link" pos="0 -0.27549999999999997 0" quat="1 0 0 0">
+              <attach model="mecanum_2" body="wheel" prefix="front_right_"/>
             </body>
           </body>
           <body name="rear_rocker_link" pos="-0.319 0 0">
             <inertial pos="0 0 0" quat="0.5 0.5 0.5 0.5" mass="10.267" diaginertia="0.0288 0.4324 0.413" />
             <geom name="rear_rocker_link_visual" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="front_rocker_link_rocker" material="black" class="visual" />
-            <body name="rear_left_wheel_link" pos="0 0.27549999999999997 0" quat="0.9238795 0 0 0.3826834">
-              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
-              <joint name="rear_left_wheel" type="hinge" axis="0 1 0" />
-              <geom name="rear_left_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
-              <geom name="rear_left_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            <body name="rear_left_wheel_link" pos="0 0.27549999999999997 0" quat="1 0 0 0">
+              <attach model="mecanum_2" body="wheel" prefix="rear_left_"/>
             </body>
-            <body name="rear_right_wheel_link" pos="0 -0.27549999999999997 0" quat="0.9238795 0 0 -0.3826834">
-              <inertial pos="0 0 0" mass="2.3" diaginertia="0.0033212 0.0066424 0.0033212" />
-              <joint name="rear_right_wheel" type="hinge" axis="0 1 0" />
-              <geom name="rear_right_wheel_link_collision" quat="0.7071 0.7071 0 0" type="cylinder" size="0.0759 0.0395" class="collision" />
-              <geom name="rear_right_wheel_link_visual" quat="0.7071 0.7071 0 0" type="mesh" mesh="front_left_wheel_link_wheel" material="black" class="visual" />
+            <body name="rear_right_wheel_link" pos="0 -0.27549999999999997 0" quat="1 0 0 0">
+              <attach model="mecanum_1" body="wheel" prefix="rear_right_"/>
             </body>
           </body>
         </body>
@@ -102,14 +96,6 @@
     <light pos="0 0 2." dir="0 0 -1" directional="true" />
     <geom name="floor" class="floor" size="0 0 0.05" />
   </worldbody>
-
-  <contact>
-    <!-- Alternating low/high tangential friction approximates mecanum roller slip. -->
-    <pair geom1="floor" geom2="front_left_wheel_link_collision" condim="3" friction="0.05 0.05 0.005 0.0001 0.0001" />
-    <pair geom1="floor" geom2="front_right_wheel_link_collision" condim="3" friction="0.05 0.05 0.005 0.0001 0.0001" />
-    <pair geom1="floor" geom2="rear_left_wheel_link_collision" condim="3" friction="0.05 0.05 0.005 0.0001 0.0001" />
-    <pair geom1="floor" geom2="rear_right_wheel_link_collision" condim="3" friction="0.05 0.05 0.005 0.0001 0.0001" />
-  </contact>
 
   <asset>
     <material name="light_grey" rgba="0.4 0.4 0.4 1.0" />
