@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Pranav Chitiveli", email = "pchitive@purdue.edu" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "mjviser>=0.0.14",
     "mujoco>=3.11.0",
