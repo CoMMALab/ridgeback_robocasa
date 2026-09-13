@@ -35,7 +35,7 @@ def main() -> None:
     try:
         os.chdir(mjcf_dir)
         portable_meshdir = base.meshdir
-        base.meshdir = str(mjcf_dir.parent)
+        base.meshdir = str(mjcf_dir / "meshes")
         model = base.compile()
         base.meshdir = portable_meshdir
         output.parent.mkdir(parents=True, exist_ok=True)

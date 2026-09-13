@@ -1,2 +1,6 @@
 .devcontainer/*
 MUJOCO_LOG.TXT
+.venv/
+assets/
+vendor/
+__pycache__/

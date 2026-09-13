@@ -13,7 +13,7 @@
     </default>
   </default>
 
-  <compiler angle="radian" meshdir=".." balanceinertia="true" />
+  <compiler angle="radian" balanceinertia="true" meshdir="meshes/"/>
 
   <option integrator="implicitfast" impratio="10" />
 
@@ -102,16 +102,16 @@
     <material name="white" rgba="0.9 0.9 0.9 1.0" />
     <material name="yellow" rgba="0.8 0.8 0.0 1.0" />
     <material name="black" rgba="0.15 0.15 0.15 1.0" />
-    <mesh name="chassis_link_collision_body_collision" file="ridgeback/ridgeback_description/meshes/body-collision.stl" />
-    <mesh name="chassis_link_body" file="ridgeback/ridgeback_description/meshes/body.stl" />
-    <mesh name="top_link_collision_top" file="ridgeback/ridgeback_description/meshes/top.stl" />
-    <mesh name="top_link_top" file="ridgeback/ridgeback_description/meshes/top.stl" />
-    <mesh name="right_side_cover_link_side_cover" file="ridgeback/ridgeback_description/meshes/side-cover.stl" />
-    <mesh name="front_cover_link_end_cover" file="ridgeback/ridgeback_description/meshes/end-cover.stl" />
-    <mesh name="front_lights_link_lights" file="ridgeback/ridgeback_description/meshes/lights.stl" />
-    <mesh name="axle_link_axle" file="ridgeback/ridgeback_description/meshes/axle.stl" />
-    <mesh name="front_rocker_link_rocker" file="ridgeback/ridgeback_description/meshes/rocker.stl" />
-    <mesh name="front_left_wheel_link_wheel" file="ridgeback/ridgeback_description/meshes/wheel.stl" />
+    <mesh name="chassis_link_collision_body_collision" file="ridgeback_base/body-collision.stl" />
+    <mesh name="chassis_link_body" file="ridgeback_base/body.stl" />
+    <mesh name="top_link_collision_top" file="ridgeback_base/top.stl" />
+    <mesh name="top_link_top" file="ridgeback_base/top.stl" />
+    <mesh name="right_side_cover_link_side_cover" file="ridgeback_base/side-cover.stl" />
+    <mesh name="front_cover_link_end_cover" file="ridgeback_base/end-cover.stl" />
+    <mesh name="front_lights_link_lights" file="ridgeback_base/lights.stl" />
+    <mesh name="axle_link_axle" file="ridgeback_base/axle.stl" />
+    <mesh name="front_rocker_link_rocker" file="ridgeback_base/rocker.stl" />
+    <mesh name="front_left_wheel_link_wheel" file="ridgeback_base/wheel.stl" />
     <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />

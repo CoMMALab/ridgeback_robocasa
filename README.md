@@ -13,3 +13,7 @@ uv run python3 visualize_ridgeback
 ```
 
 This should show an MjViser visualization of a simulated ridgeback base with two mounted Franka Emika Panda arms.
+
+## References
+- https://github.com/ridgeback/ridgeback
+- https://github.com/ridgeback/ridgeback_manipulation
