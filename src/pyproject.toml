@@ -8,9 +8,10 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "mjviser>=0.0.14",
-    "mujoco>=3.11.0",
-    "urdf-to-mjcf>=0.1.1",
+    "mujoco>=3.0",
+    "robocasa",
+    "robosuite",
+    "setuptools<81",
     "xacro>=2.1.1",
 ]
 
@@ -20,3 +21,14 @@ ridgeback-env = "ridgeback_env:main"
 [build-system]
 requires = ["uv_build>=0.12.6,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+]
+
+[tool.uv.sources]
+robocasa = { path = "../robocasa", editable = true }
+robosuite = { path = "../robosuite", editable = true }

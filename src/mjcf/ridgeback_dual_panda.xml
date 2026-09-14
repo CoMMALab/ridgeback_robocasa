@@ -1,5 +1,5 @@
 <mujoco model="ridgeback">
-  <compiler angle="radian" meshdir="/home/pchitiveli/comma/ridgeback_env/meshes/"/>
+  <compiler angle="radian" meshdir="meshes/"/>
 
   <option impratio="10" integrator="implicitfast"/>
 

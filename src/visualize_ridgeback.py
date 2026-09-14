@@ -48,7 +48,27 @@ def main() -> None:
         raise SystemExit(f"Unsupported MJCF file provided")
 
     data = mujoco.MjData(model)
-    Viewer(model, data).run()
+    # Viewer(model, data).run()  # <-- REQUIRES MJVISER, MUJOCO 3.13.1 WHICH IS INCOMPATIBLE WITH ROBOSUITE/ROBOCASA
+
+    with mujoco.viewer.launch_passive(model, data) as viewer:
+        # Close the viewer cleanly upon loop completion or script exit
+        while viewer.is_running():
+            step_start = time.time()
+
+            # Place your custom controllers, forces, or logic here
+            # Example: data.ctrl[0] = 1.0
+
+            # Step the physics forward
+            mujoco.mj_step(model, data)
+
+            # Synchronize viewer markers and physics state
+            viewer.sync()
+
+            # Constrain loop timing to match real-time physics simulation
+            time_now = time.time()
+            time_until_next_step = model.opt.timestep - (time_now - step_start)
+            if time_until_next_step > 0:
+                time.sleep(time_until_next_step)
 
 
 if __name__ == "__main__":

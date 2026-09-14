@@ -1,3 +1,9 @@
 [submodule "mujoco_menagerie"]
-	path = mjcf/mujoco_menagerie
+	path = src/mjcf/mujoco_menagerie
 	url = https://github.com/google-deepmind/mujoco_menagerie.git
+[submodule "robosuite"]
+	path = robosuite
+	url = https://github.com/CoMMALab/robosuite.git
+[submodule "robocasa"]
+	path = robocasa
+	url = https://github.com/robocasa/robocasa.git
