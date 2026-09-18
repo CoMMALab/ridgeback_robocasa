@@ -30,5 +30,5 @@ members = [
 ]
 
 [tool.uv.sources]
-robocasa = { path = "../robocasa", editable = true }
 robosuite = { path = "../robosuite", editable = true }
+robocasa = { path = "../robocasa", editable = true }

@@ -6,4 +6,4 @@
 	url = https://github.com/CoMMALab/robosuite.git
 [submodule "robocasa"]
 	path = robocasa
-	url = https://github.com/robocasa/robocasa.git
+	url = https://github.com/CoMMALab/robocasa.git
