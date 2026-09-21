@@ -14,10 +14,14 @@ git submodule update --init --recursive
 
 Verify that your setup works by running the robocasa demo with the Ridgeback Dual Panda configuration:
 ```bash
-uv run python3 -m robocasa.demos.demo_kitchen_scenes --robot RidgebackDualPanda
+cd src
+uv sync
+uv run python3 -m robocasa.demos.demo_kitchen_scenes --robot RidgebackDualPanda --layout 1 --style 1
 ```
+This defaults to an mjviser visualization that should look like the following. Note that it may take a minute for the kitchen environment to be visualized in mjviser.
+![MJViser Visualization of Robocasa Kitchen with Ridgeback](mjviser_kitchen.png)
 
-This will pull up a visualization of the Ridgeback Dual Panda configuration in a kitchen layout of your choosing. You can verify that the system works as expected with keyboard teleoperated control - the `b` key toggles whether you control the base or arms, and the arrow keys apply your control to the robot. The `o` and `p` keys control the base's yaw when base control is toggled on.
+For local visualization using mujoco's native viewer (which enables teleop control and loads faster), add the argument `--renderer mjviewer`.
 
 ## References
 - https://github.com/ridgeback/ridgeback
