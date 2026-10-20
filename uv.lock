@@ -2653,7 +2653,7 @@ wheels = [
 ]
 
 [[package]]
-name = "ridgeback-env"
+name = "ridgeback-robocasa"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
@@ -2669,8 +2669,8 @@ dependencies = [
 requires-dist = [
     { name = "mjviser", specifier = "==0.0.14" },
     { name = "mujoco", specifier = "==3.6.0" },
-    { name = "robocasa", editable = "../robocasa" },
-    { name = "robosuite", editable = "../robosuite" },
+    { name = "robocasa", editable = "robocasa" },
+    { name = "robosuite", editable = "robosuite" },
     { name = "setuptools", specifier = "<81" },
     { name = "xacro", specifier = ">=2.1.1" },
 ]
@@ -2678,7 +2678,7 @@ requires-dist = [
 [[package]]
 name = "robocasa"
 version = "1.0.1"
-source = { editable = "../robocasa" }
+source = { editable = "robocasa" }
 dependencies = [
     { name = "gymnasium" },
     { name = "h5py" },
@@ -2727,7 +2727,7 @@ requires-dist = [
 [[package]]
 name = "robosuite"
 version = "1.5.2"
-source = { editable = "../robosuite" }
+source = { editable = "robosuite" }
 dependencies = [
     { name = "mujoco" },
     { name = "numba" },

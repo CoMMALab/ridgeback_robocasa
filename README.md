@@ -14,7 +14,6 @@ git submodule update --init --recursive
 
 Verify that your setup works by running the robocasa demo with the Ridgeback Dual Panda configuration:
 ```bash
-cd src
 uv sync
 uv run python3 -m robocasa.demos.demo_kitchen_scenes --robot RidgebackDualPanda --layout 1 --style 1
 ```

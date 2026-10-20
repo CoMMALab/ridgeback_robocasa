@@ -1,5 +1,5 @@
 [project]
-name = "ridgeback-env"
+name = "ridgeback-robocasa"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ridgeback-env = "ridgeback_env:main"
+ridgeback-robocasa = "ridgeback_robocasa:main"
 
 [build-system]
 requires = ["uv_build>=0.12.6,<0.13.0"]
@@ -31,5 +31,5 @@ members = [
 ]
 
 [tool.uv.sources]
-robosuite = { path = "../robosuite", editable = true }
-robocasa = { path = "../robocasa", editable = true }
+robosuite = { path = "robosuite", editable = true }
+robocasa = { path = "robocasa", editable = true }
