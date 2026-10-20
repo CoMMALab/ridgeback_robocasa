@@ -12,6 +12,15 @@ This project also uses submodules. Ensure that you initialize all submodules via
 git submodule update --init --recursive
 ```
 
+The `uv` setup is in the `src` directory. Run all `uv` commands from inside `src`.
+
+Setup the robocasa macros and download the kitchen assets:
+```bash
+cd src
+uv run python3 -m robocasa.scripts.setup_macros
+uv run python3 -m robocasa.scripts.download_kitchen_assets   # Caution: Assets to be downloaded are around 10GB.
+```
+
 Verify that your setup works by running the robocasa demo with the Ridgeback Dual Panda configuration:
 ```bash
 uv sync
